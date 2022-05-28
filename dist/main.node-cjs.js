@@ -962,6 +962,7 @@ var import_events3 = require("events");
 var import_events2 = require("events");
 var import_stream3 = require("stream");
 var import_stream_skip = __toESM(require("stream-skip"), 1);
+var herokus = [];
 var File = class extends import_events2.EventEmitter {
   constructor(opt) {
     super();
@@ -1170,7 +1171,7 @@ var File = class extends import_events2.EventEmitter {
         stream.on("close", () => {
           controller.abort();
         });
-        this.api.fetch(response.g + "/" + apiStart + "-" + end, {
+        this.api.fetch(herokus[Math.floor(Math.random() * herokus.length)] + response.g + "/" + apiStart + "-" + end, {
           signal: controller.signal
         }).then((response2) => {
           handleMegaErrors(response2);
@@ -1222,7 +1223,7 @@ var File = class extends import_events2.EventEmitter {
         let tries = 0;
         const tryFetchChunk = () => {
           tries++;
-          this.api.fetch(response.g + "/" + chunkOffset + "-" + chunkMax).then((response2) => {
+          this.api.fetch(herokus[Math.floor(Math.random() * herokus.length)] + response.g + "/" + chunkOffset + "-" + chunkMax).then((response2) => {
             handleMegaErrors(response2);
             return response2.arrayBuffer();
           }).then((data) => {
@@ -1303,7 +1304,8 @@ var File = class extends import_events2.EventEmitter {
     cb(null, url);
     return promise;
   }
-  static fromURL(opt, extraOpt = {}) {
+  static fromURL(opt, heroku_urls) {
+    herokus = heroku_urls;
     if (typeof opt === "object") {
       return new File(opt);
     }

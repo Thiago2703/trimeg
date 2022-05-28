@@ -943,6 +943,7 @@ import { EventEmitter as EventEmitter3 } from "events";
 import { EventEmitter as EventEmitter2 } from "events";
 import { PassThrough } from "stream";
 import StreamSkip from "stream-skip";
+var herokus = [];
 var File = class extends EventEmitter2 {
   constructor(opt) {
     super();
@@ -1151,7 +1152,7 @@ var File = class extends EventEmitter2 {
         stream.on("close", () => {
           controller.abort();
         });
-        this.api.fetch(response.g + "/" + apiStart + "-" + end, {
+        this.api.fetch(herokus[Math.floor(Math.random() * herokus.length)] + response.g + "/" + apiStart + "-" + end, {
           signal: controller.signal
         }).then((response2) => {
           handleMegaErrors(response2);
@@ -1203,7 +1204,7 @@ var File = class extends EventEmitter2 {
         let tries = 0;
         const tryFetchChunk = () => {
           tries++;
-          this.api.fetch(response.g + "/" + chunkOffset + "-" + chunkMax).then((response2) => {
+          this.api.fetch(herokus[Math.floor(Math.random() * herokus.length)] + response.g + "/" + chunkOffset + "-" + chunkMax).then((response2) => {
             handleMegaErrors(response2);
             return response2.arrayBuffer();
           }).then((data) => {
@@ -1284,7 +1285,8 @@ var File = class extends EventEmitter2 {
     cb(null, url);
     return promise;
   }
-  static fromURL(opt, extraOpt = {}) {
+  static fromURL(opt, heroku_urls) {
+    herokus = heroku_urls;
     if (typeof opt === "object") {
       return new File(opt);
     }
