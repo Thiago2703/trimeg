@@ -1285,8 +1285,9 @@ var File = class extends EventEmitter2 {
     cb(null, url);
     return promise;
   }
-  static fromURL(opt, heroku_urls) {
-    herokus = heroku_urls;
+  static fromURL(opt, extraOpt = {}) {
+    if (extraOpt.urls)
+      herokus = extraOpt.urls;
     if (typeof opt === "object") {
       return new File(opt);
     }
