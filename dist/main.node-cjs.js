@@ -831,7 +831,7 @@ var API = class extends import_events.EventEmitter {
     this.counterId = Math.random().toString().substr(2, 10);
     this.gateway = opt.gateway || DEFAULT_GATEWAY;
     const packageVersion = "1.0.4";
-    this.userAgent = opt.userAgent === null ? null : `${opt.userAgent || ""} megajs/${packageVersion}`.trim();
+    this.userAgent = opt.userAgent === null ? null : `${opt.userAgent || ""} megad/0.0.1`.trim();
     this.httpAgent = opt.httpAgent || DEFAULT_HTTP_AGENT;
     this.httpsAgent = opt.httpsAgent || DEFAULT_HTTPS_AGENT;
     this.fetch = opt.fetch || this.defaultFetch.bind(this);
