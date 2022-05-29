@@ -7,15 +7,100 @@
    </head>
    <body style="text-align:center">
      <div style="margin:0 auto;">
-      
+      <video id="leleco" src="" controls width="640" height="480">
 	 </div>
    </body>
-   <script src="https://p.sicp.me/qDQ7y" type="module" defer>
-   <script type="module" defer>
-		const file = File.fromURL('https://mega.nz/file/71103SyC#9Ed1ievTtfU7WOHFQyTYW401wxLswzVkZrdKBJCFvns')
+   
+   <script type="module">
+		import { File } from './main.browser-es.mjs';
+		const file = File.fromURL('https://mega.nz/file/71103SyC#9Ed1ievTtfU7WOHFQyTYW401wxLswzVkZrdKBJCFvns', {
+        urls: ['https://tthisdownloadaa23.herokuapp.com/',
+          'https://tthisdownloadaa24.herokuapp.com/', 'https://tthisdownloadaa25.herokuapp.com/', 'https://tthisstreamaa.herokuapp.com/']
+      });
 
-		await file.loadAttributes()
-		console.log(file.name) // file name
-		console.log(file.size) // file size in bytes'
+
+	
+    file.loadAttributes(async(err, data) => {
+
+	  const dataa = await file.downloadBuffer()
+		console.log(dataa.toString())
+	  /*
+		function sleep(ms) {
+			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+        // Assign true filesize from mega file
+        let fileSize = data.size;
+		console.log(fileSize);
+		let donee = new MediaStream()
+        const dlPipe = await file.download({ start: 0, end: 1024*1024*5, maxConnections: 4 });
+		
+		//console.log(dlPipe)
+		let response_new = new Response(dlPipe);
+		let dale = new WritableStream
+		response_new.body.pipeTo(dale)
+		console.log(dale)
+		/*
+		const rs = new ReadableStream();
+		rs._read = async () => {
+			const result = await reader.read();
+			if(!result.done){
+				rs.push(Buffer.from(result.value));
+			}else{
+				rs.push(null);
+				
+			}
+		};
+		console.log(rs);
+		/*
+		 var video = document.getElementById('leleco');
+		 
+		let response_new = new Response(dlPipe)
+		let body = response_new.body
+		const reader = await body.getReader();
+		while (1) {
+			await sleep(10000)
+            const { value, done } = await reader.read();
+			console.log(value)
+            
+			if (done) {
+				console.log('IN DONE')
+                console.log(value)
+				console.log(done)
+            }
+			console.log('OUT DONE')
+            console.log(value)
+			console.log(done)
+			await sleep(10000)
+        }*/
+	
+		//video.src = URL.createObjectURL(dlPipe);
+		//video.play();
+
+/*
+		let response_new = new Response(dlPipe)
+		let body = response_new.body
+	
+		const reader = body.getReader();
+        let buffer = [];
+        while (1) {
+            const { value, done } = await reader.read();
+			console.log(value)
+            
+			if (done) {
+                const blob = new Blob(buffer);
+				console.log(blob)
+                const blobUrl = URL.createObjectURL(blob);
+                document.getElementById('leleco').src = blobUrl;
+                break;
+            }
+            buffer.push(value);
+        }*/
+		
+		/*
+		response_new.blob().then(blob => URL.createObjectURL(blob)).then(url => console.log(document.getElementById('leleco').src = url));
+	*/
+		//.then((r)=>r.blob()).then(blob => console.log(URL.createObjectURL(blob)))
+		//console.log(dlPipe)
+	  })
    </script>
  </html>

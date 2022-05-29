@@ -1081,9 +1081,9 @@ var File = class extends EventEmitter2 {
     const apiStart = options.returnCiphertext ? start : start - start % 16;
     let end = options.end || null;
     const maxConnections = options.maxConnections || 4;
-    const initialChunkSize = options.initialChunkSize || 128 * 1024;
-    const chunkSizeIncrement = options.chunkSizeIncrement || 128 * 1024;
-    const maxChunkSize = options.maxChunkSize || 1024 * 1024;
+    const initialChunkSize = options.initialChunkSize || 128 * 1024 * 5;
+    const chunkSizeIncrement = options.chunkSizeIncrement || 128 * 1024 * 5;
+    const maxChunkSize = options.maxChunkSize || 1024 * 1024 * 5;
     const ssl = options.forceHttps ?? false ? 2 : 0;
     const req = {
       a: "g",
