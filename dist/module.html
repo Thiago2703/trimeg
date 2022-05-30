@@ -20,8 +20,8 @@
 
 	
     file.loadAttributes(async(err, data) => {
-
-	const dataa = await file.downloadBuffer();
+	let fileSize = data.size;
+	const dataa = await file.download({ start: 0, end: fileSize-1 });
 	console.log(dataa.toString())
 	  /*
 		function sleep(ms) {
