@@ -1242,18 +1242,10 @@ var File = class extends import_events2.EventEmitter {
                 handleError(error2);
               } else {
                 tryFetchChunk();
-                tryFetchChunk();
-                tryFetchChunk();
-                tryFetchChunk();
-                tryFetchChunk();
               }
             });
           });
         };
-        tryFetchChunk();
-        tryFetchChunk();
-        tryFetchChunk();
-        tryFetchChunk();
         tryFetchChunk();
         currentOffset = chunkMax + 1;
         if (chunkSize < maxChunkSize) {
@@ -1282,11 +1274,9 @@ var File = class extends import_events2.EventEmitter {
           getChunk();
           getChunk();
           getChunk();
-          getChunk();
         }
       };
       for (let i2 = 0; i2 < maxConnections; i2++) {
-        getChunk();
         getChunk();
         getChunk();
         getChunk();
