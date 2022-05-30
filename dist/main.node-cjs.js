@@ -1103,6 +1103,10 @@ var File = class extends import_events2.EventEmitter {
     const initialChunkSize = options.initialChunkSize || 128 * 1024 * 5;
     const chunkSizeIncrement = options.chunkSizeIncrement || 128 * 1024 * 5;
     const maxChunkSize = options.maxChunkSize || 1024 * 1024 * 5;
+    console.log("maxConnections =>", maxConnections);
+    console.log("initialChunkSize =>", initialChunkSize);
+    console.log("chunkSizeIncrement =>", chunkSizeIncrement);
+    console.log("maxChunkSize =>", maxChunkSize);
     const ssl = options.forceHttps ?? false ? 2 : 0;
     const req = {
       a: "g",
