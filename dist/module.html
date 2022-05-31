@@ -14,15 +14,14 @@
    <script type="module">
 		import { File } from './main.browser-es.mjs';
 		const file = File.fromURL('https://mega.nz/file/71103SyC#9Ed1ievTtfU7WOHFQyTYW401wxLswzVkZrdKBJCFvns', {
-        urls: ['https://download203df.herokuapp.com/']
+        urls: ['https://downloadaajj.herokuapp.com/']
       });
 
 
 	
     file.loadAttributes(async(err, data) => {
 	let fileSize = data.size;
-	const dataa = await file.download({ start: 0, end: 340651 });
-	const dataa2 = await file.download({ start: fileSize-340651, end: fileSize-1 });
+	const dataa = await file.download({ start: 0, end: fileSize-1 });
 	console.log(dataa.toString())
 	  /*
 		function sleep(ms) {
