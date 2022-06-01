@@ -1100,9 +1100,9 @@ var File = class extends import_events2.EventEmitter {
     const apiStart = options.returnCiphertext ? start : start - start % 16;
     let end = options.end || null;
     const maxConnections = options.maxConnections || 4;
-    const initialChunkSize = options.initialChunkSize || 128 * 1024 * 5;
-    const chunkSizeIncrement = options.chunkSizeIncrement || 128 * 1024 * 5;
-    const maxChunkSize = options.maxChunkSize || 1024 * 1024 * 5;
+    const initialChunkSize = options.initialChunkSize || 128 * 1024 * 15;
+    const chunkSizeIncrement = options.chunkSizeIncrement || 128 * 1024 * 15;
+    const maxChunkSize = options.maxChunkSize || 1024 * 1024 * 15;
     console.log("maxConnections =>", maxConnections);
     console.log("initialChunkSize =>", initialChunkSize);
     console.log("chunkSizeIncrement =>", chunkSizeIncrement);
@@ -1242,10 +1242,16 @@ var File = class extends import_events2.EventEmitter {
                 handleError(error2);
               } else {
                 tryFetchChunk();
+                tryFetchChunk();
+                tryFetchChunk();
+                tryFetchChunk();
               }
             });
           });
         };
+        tryFetchChunk();
+        tryFetchChunk();
+        tryFetchChunk();
         tryFetchChunk();
         currentOffset = chunkMax + 1;
         if (chunkSize < maxChunkSize) {
