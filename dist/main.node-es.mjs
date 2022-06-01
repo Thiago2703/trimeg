@@ -1257,7 +1257,7 @@ var File = class extends EventEmitter2 {
       for (let i2 = 0; i2 < maxConnections; i2++) {
         getChunk();
       }
-    }, 5);
+    }, 25);
     if (cb)
       streamToCb(stream, cb);
     return stream;
