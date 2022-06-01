@@ -1271,9 +1271,15 @@ var File = class extends import_events2.EventEmitter {
           decryptStream.once("drain", handleStreamWrite);
         } else {
           getChunk();
+          getChunk();
+          getChunk();
+          getChunk();
         }
       };
       for (let i2 = 0; i2 < maxConnections; i2++) {
+        getChunk();
+        getChunk();
+        getChunk();
         getChunk();
       }
     }, 25);
