@@ -1391,6 +1391,20 @@ var MutableFile = class extends file_default {
   loadAttributes() {
     throw Error("This is not needed for files loaded from logged in sessions");
   }
+  getFileURL(opt, originalCb) {
+    console.log(opt);
+    if (typeof opt !== "string" || !opt)
+      throw Error("provide a valid NodeId");
+    let nodeID = opt;
+    let key = e64(this.storage.files[nodeID].key);
+    const [cb, promise] = createPromise(originalCb);
+    this.api.request({ "a": "l", "n": nodeID }, (err, response) => {
+      if (err)
+        return cb(err);
+      cb({ id: response, key });
+    });
+    return promise;
+  }
   mkdir(opt, originalCb) {
     if (!this.directory)
       throw Error("node isn't a directory");
@@ -2177,6 +2191,12 @@ var Storage = class extends EventEmitter3 {
       }
     }
     return this.files[f.h];
+  }
+  getFileURL(opt, cb) {
+    if (this.status !== "ready") {
+      throw Error("storage is not ready");
+    }
+    return this.root.getFileURL(opt, cb);
   }
   mkdir(opt, cb) {
     if (this.status !== "ready") {
